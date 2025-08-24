@@ -1,7 +1,7 @@
 import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { RiArrowLeftWideLine, RiArrowRightWideLine } from "react-icons/ri";
 import Rectangle4 from "../../../src/assets/Rectangle 4.png";
 import Rectangle7347 from "../../../src/assets/Rectangle 7347.png";
 
@@ -24,10 +24,10 @@ const BannerSlider = () => {
               className="absolute left-34 md:left-6 lg:left-16 
                          md:top-1/2 md:-translate-y-1/2 
                          bottom-18 md:bottom-auto 
-                         z-20 text-white border border-white rounded-full p-1 
+                         z-20 text-white border border-white rounded-full p-2 
                          hover:scale-110 transition"
             >
-              <LuChevronLeft size={28} />
+              <RiArrowLeftWideLine size={28} />
             </button>
           )
         }
@@ -40,10 +40,10 @@ const BannerSlider = () => {
               className="absolute right-34 md:right-6 lg:right-16  
                          md:top-1/2 md:-translate-y-1/2 
                          bottom-18 md:bottom-auto 
-                         z-20 text-white border border-white rounded-full p-1 
+                         z-20 text-white border border-white rounded-full p-2 
                          hover:scale-110 transition"
             >
-              <LuChevronRight size={28} />
+              <RiArrowRightWideLine  size={28} />
             </button>
           )
         }
