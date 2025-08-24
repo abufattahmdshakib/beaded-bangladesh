@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from '../../../public/assets/Group.png';
-import userlogo from '../../../public/assets/user.png';
-import cartlogo from '../../../public/assets/shopping-bag.png';
+import logo from '../../../src/assets/Group.png';
+import userlogo from '../../../src/assets/user.png';
+import cartlogo from '../../../src/assets/shopping-bag.png';
 import { Link, NavLink } from 'react-router-dom';
 import MobileNavbar from './MobileNavbar';
 
@@ -16,7 +16,7 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex justify-between items-center px-12">
                 {/* Left navlinks */}
-                <div className="flex gap-6 text-[#1E1E1E] text-[17px] font-[400] jost-font-uppercase mb-6">
+                <div className="flex gap-6 md:gap-4 lg:gap-6 text-[#1E1E1E] text-[17px] md:text-[14px]  lg:text-[17px] font-[400] jost-font-uppercase mb-6">
                     <NavLink
                         to="/view-shop"
                         className={({ isActive }) =>
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Right user/cart */}
-                <div className="flex items-center gap-6 text-[17px] text-[#1E1E1E] jost-font-uppercase mb-6">
+                <div className="flex items-center gap-6 md:text-[14px] lg:text-[17px] text-[#1E1E1E] jost-font-uppercase mb-6">
                     <div className="flex items-center gap-2">
                         <img src={userlogo} alt="userlogo" />
                         <Link>Sign In</Link>

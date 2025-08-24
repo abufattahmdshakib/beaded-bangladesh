@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import logo from "../../../public/assets/Group.png";
-import userlogo from "../../../public/assets/user.png";
-import cartlogo from "../../../public/assets/shopping-bag.png";
+import logo from "../../../src/assets/Group.png";
+import userlogo from "../../../src/assets/user.png";
+import cartlogo from "../../../src/assets/shopping-bag.png";
 import { Link, NavLink } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 
@@ -9,7 +9,7 @@ const MobileNavbar = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <div className="md:hidden w-full bg-white relative z-50 shadow-md">
+        <div className="md:hidden w-full   bg-white relative z-50 shadow-md">
             {/* Top bar */}
             <div className="flex justify-between items-center px-4 py-4">
                 {!menuOpen ? (
@@ -44,7 +44,7 @@ const MobileNavbar = () => {
 
             {/* Dropdown menu */}
             {menuOpen && (
-                <div className="bg-white px-4 pb-4 flex flex-col gap-4 border-t jost-font-uppercase">
+                <div className="bg-white h-[100dvh] px-4 pb-4 flex flex-col gap-4 border-t jost-font-uppercase">
                     <NavLink to="/view-shop" className="text-[#1E1E1E] text-[17px]">
                         View Shop
                     </NavLink>
