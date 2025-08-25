@@ -10,41 +10,41 @@ const Navbar = () => {
         <div className="w-full mx-auto bg-white">
             {/* Desktop Logo */}
             <div className="hidden md:flex justify-center">
-                <img className="w-[180px] h-[54px] my-6" src={logo} alt="Logo" />
+                <Link to="/"><img className="w-[180px] h-[54px] my-6" src={logo} alt="Logo" /></Link>
             </div>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex justify-between items-center px-12">
                 {/* Left navlinks */}
-                <div className="flex gap-6 md:gap-4 lg:gap-6 text-[#1E1E1E] text-[17px] md:text-[14px]  lg:text-[17px] font-[400] jost-font-uppercase mb-6">
+                <div className="flex items-center gap-6 md:gap-4 lg:gap-6 text-[#1E1E1E] text-[17px] md:text-[14px]  lg:text-[17px] font-[400] jost-font-uppercase mb-6">
                     <NavLink
-                        to="/view-shop"
+                        to="/ViewShop"
                         className={({ isActive }) =>
-                            isActive ? "border-b border-black pb-[2px]" : ""
+                            isActive ? "border border-black py-[8px] px-[14px]" : ""
                         }
                     >
                         View Shop
                     </NavLink>
                     <NavLink
-                        to="/hot-deals"
+                        to="/HotDeals"
                         className={({ isActive }) =>
-                            isActive ? "border-b border-black pb-[2px]" : ""
+                            isActive ? "border border-black py-[8px] px-[14px]" : ""
                         }
                     >
                         Hot Deals
                     </NavLink>
                     <NavLink
-                        to="/eid-collection"
+                        to="/EidCollection"
                         className={({ isActive }) =>
-                            isActive ? "border-b border-black pb-[2px]" : ""
+                            isActive ? "border border-black py-[8px] px-[14px]" : ""
                         }
                     >
                         Eid Collection
                     </NavLink>
                     <NavLink
-                        to="/boishakhi-collection"
+                        to="/BoishakhiCollection"
                         className={({ isActive }) =>
-                            isActive ? "border-b border-black pb-[2px]" : ""
+                            isActive ? "border border-black py-[8px] px-[14px]" : ""
                         }
                     >
                         Boishakhi Collection

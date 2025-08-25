@@ -38,7 +38,7 @@ const OurEarrings = () => {
     return (
         <div className="relative ">
             <h1 className='jost-font-uppercase font-[400] text-[24px] lg:text-[38px] text-[#1E1E1E] text-center mb-8'>
-                OUR NECKLACES
+                OUR EARRINGS
             </h1>
 
             <div className="flex items-center justify-center gap-4">
