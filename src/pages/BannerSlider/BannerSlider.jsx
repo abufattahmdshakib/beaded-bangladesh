@@ -58,7 +58,7 @@ const BannerSlider = () => {
                 className="w-full object-cover"
               />
               {/* Black overlay */}
-              <div className="absolute inset-0 bg-black/40 bg-opacity-30"></div>
+              <div className="absolute inset-0 bg-black/30 bg-opacity-30"></div>
             </div>
 
             {/* Mobile image */}
@@ -69,7 +69,7 @@ const BannerSlider = () => {
                 className="w-full object-cover"
               />
               {/* Black overlay */}
-              <div className="absolute inset-0 bg-black/50 bg-opacity-30"></div>
+              <div className="absolute inset-0 bg-black/40 bg-opacity-30"></div>
             </div>
 
             {/* Centered text */}

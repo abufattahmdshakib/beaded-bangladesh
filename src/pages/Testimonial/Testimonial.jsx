@@ -14,19 +14,19 @@ import subImg3 from "../../../src/assets/format_quote_FILL1_wght400_GRAD0_opsz48
 const testimonial = [
     {
         thumbnail: subImg1,
-        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.",
+        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.1",
         title: "Ava Nicholls 1",
         mainImage: mainImg1,
     },
     {
         thumbnail: subImg2,
-        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.",
+        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.2",
         title: "Ava Nicholls 2",
         mainImage: mainImg2,
     },
     {
         thumbnail: subImg3,
-        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.",
+        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.3",
         title: "Ava Nicholls 3",
         mainImage: mainImg3,
     }
