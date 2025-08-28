@@ -16,56 +16,65 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null); 
-    const [loading, setLoading] = useState(true);  // 🔹 loading state যোগ করা হলো
+    const [loading, setLoading] = useState(true);  
+    const [wishlist, setWishlist] = useState([]); // ✅ Wishlist state
 
     const provider = new GoogleAuthProvider();
 
     const createUser = (email, password) => {
-        setLoading(true); // 🔹 loading set
+        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     };
 
     const logOut = () => {
-        setLoading(true); // 🔹 loading set
+        setLoading(true);
         return signOut(auth);
     };
 
     const login = (email, password) => {
-        setLoading(true); // 🔹 loading set
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
     };
 
     const handleWithGoogle = () => {
-        setLoading(true); // 🔹 loading set
+        setLoading(true);
         return signInWithPopup(auth, provider);
     };
 
     const resetPassword = (email) => {
-        setLoading(true); // 🔹 loading set
+        setLoading(true);
         return sendPasswordResetEmail(auth, email);
+    };
+
+    const addToWishlist = (product) => {
+        setWishlist(prev => {
+            // Prevent duplicates
+            if (prev.some(item => item.id === product.id)) return prev;
+            return [...prev, product];
+        });
     };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
-            setLoading(false); // 🔹 auth state change হলে loading false
+            setLoading(false);
         });
         return () => unsubscribe();
     }, []);
 
-    const authhData = {
-        user, 
-        loading,   // 🔹 context এ loading পাঠানো হলো
-        setUser, 
-        createUser, 
-        logOut, 
-        login, 
-        handleWithGoogle, 
-        resetPassword 
-    };
-
     return (
-        <AuthContext.Provider value={authhData}>
+        <AuthContext.Provider value={{
+            user,
+            loading,
+            wishlist,        // ✅ Provide wishlist
+            setWishlist,     // ✅ Provide setter
+            createUser,
+            logOut,
+            login,
+            handleWithGoogle,
+            resetPassword,
+            addToWishlist    // ✅ Provide add function
+        }}>
             {children}
         </AuthContext.Provider>
     );

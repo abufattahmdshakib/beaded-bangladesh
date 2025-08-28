@@ -61,11 +61,21 @@ const Navbar = () => {
                                 {dropdownOpen && (
                                     <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-300 shadow-md flex flex-col px-2 py-2 z-50">
                                         <div className='mb-6'>
-                                            <span className="pl-2 text-[#00B5A5]  jost-font-uppercase py-2 border-b-2 font-[600]">{user.displayName || "User"}</span>
+                                            <span className="pl-2 text-[#00B5A5] jost-font-uppercase py-2 border-b-2 font-[600]">{user.displayName || "User"}</span>
                                         </div>
-                                        <Link to="/profile" className="jost-font-uppercase text-[#1E1E1E]  px-4 py-2 hover:bg-gray-100">Profile</Link>
-                                        <Link to="/orders" className="jost-font-uppercase text-[#1E1E1E]  px-4 py-2 hover:bg-gray-100">My Orders</Link>
-                                        <button onClick={handleLogout} className="jost-font-uppercase text-[#1E1E1E]  px-4 py-2 text-left hover:bg-gray-100 w-full">Sign Out</button>
+                                        <Link 
+                                            to="/profile" 
+                                            className="jost-font-uppercase text-[#1E1E1E] px-4 py-2 hover:bg-gray-100"
+                                            onClick={() => setDropdownOpen(false)} // close on click
+                                        >
+                                            My Profile
+                                        </Link>
+                                        <button 
+                                            onClick={handleLogout} 
+                                            className="jost-font-uppercase text-[#1E1E1E] px-4 py-2 text-left hover:bg-gray-100 w-full"
+                                        >
+                                            Sign Out
+                                        </button>
                                     </div>
                                 )}
                             </div>

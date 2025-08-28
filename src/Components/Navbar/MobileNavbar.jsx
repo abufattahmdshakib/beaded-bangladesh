@@ -135,13 +135,6 @@ const MobileNavbar = () => {
                     >
                       My Profile
                     </Link>
-                    <Link
-                      to="/orders"
-                      onClick={handleClose}
-                      className="text-left text-[#1E1E1E] font-[400] hover:underline"
-                    >
-                      My Orders
-                    </Link>
                     <button
                       onClick={handleLogout}
                       className="text-left text-[#00B5A5] font-[400] hover:underline"

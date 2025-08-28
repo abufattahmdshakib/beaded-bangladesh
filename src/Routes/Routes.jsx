@@ -13,6 +13,7 @@ import ProductDetail from '../Components/ViewShop/ProductDetail';
 import SignIn from '../pages/Auth/SignIn';
 import SignUp from '../pages/Auth/SignUp';
 import RecoverPassword from '../pages/Auth/RecoverPassword';
+import UserProfile from '../pages/UserProfile';
 
 export const router = createBrowserRouter([
   {
@@ -43,20 +44,25 @@ export const router = createBrowserRouter([
         path: "/BoishakhiCollection",
         Component: BoishakhiCollection,
       },
+      // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/recover-password",
+        element: <RecoverPassword />,
+      },
+      {
+        path:"/profile" ,
+      element: <UserProfile />
+      }
     ],
   },
-  // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
-  {
-    path: "/signin",
-    element: <SignIn />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
-  {
-    path: "/recover-password",
-    element: <RecoverPassword />,
-  },
+
   { path: "*", element: <NotF /> },
 ]);
