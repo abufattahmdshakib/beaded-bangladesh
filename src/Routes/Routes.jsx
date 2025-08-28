@@ -43,20 +43,20 @@ export const router = createBrowserRouter([
         path: "/BoishakhiCollection",
         Component: BoishakhiCollection,
       },
-      // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
-      {
-        path: "/signin",
-        element: <SignIn />,
-      },
-      {
-        path: "/signup",
-        element: <SignUp />,
-      },
-      {
-        path: "/recover-password",
-        element: <RecoverPassword />,
-      },
     ],
+  },
+  // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
+  {
+    path: "/signin",
+    element: <SignIn />,
+  },
+  {
+    path: "/signup",
+    element: <SignUp />,
+  },
+  {
+    path: "/recover-password",
+    element: <RecoverPassword />,
   },
   { path: "*", element: <NotF /> },
 ]);
