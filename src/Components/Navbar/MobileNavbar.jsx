@@ -22,7 +22,7 @@ const MobileNavbar = () => {
         ) : (
           // Menu open: logo left, X icon right
           <>
-           <Link to="/"><img className="w-[120px] h-[36px]" src={logo} alt="Logo" /></Link>
+            <Link to="/"><img className="w-[120px] h-[36px]" src={logo} alt="Logo" /></Link>
             <button onClick={handleClose}>
               <HiX size={20} className="text-black" />
             </button>
@@ -39,7 +39,9 @@ const MobileNavbar = () => {
         {/* Cart icon only when menu closed */}
         {!menuOpen && (
           <div>
-            <img src={cartlogo} alt="shopping-bag" />
+            <Link to="/cart">
+              <img src={cartlogo} alt="shopping-bag" />
+            </Link>
           </div>
         )}
       </div>
@@ -93,7 +95,7 @@ const MobileNavbar = () => {
             className="flex items-center gap-2 mt-2 text-[#1E1E1E]"
           >
             <img src={userlogo} alt="userlogo" className="w-6 h-6" />
-            <Link to="/">Sign In</Link>
+            <Link to="/signin">Sign In</Link>
           </div>
         </div>
       )}

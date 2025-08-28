@@ -9,6 +9,11 @@ import BoishakhiCollection from '../Components/BoishakhiCollection/BoishakhiColl
 import NotF from '../pages/NotF/NotF';
 import ProductDetail from '../Components/ViewShop/ProductDetail';
 
+// 🔹 New imports
+import SignIn from '../pages/Auth/SignIn';
+import SignUp from '../pages/Auth/SignUp';
+import RecoverPassword from '../pages/Auth/RecoverPassword';
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -20,26 +25,38 @@ export const router = createBrowserRouter([
       },
       {
         path: "/ViewShop",
-        Component: ViewShop
+        Component: ViewShop,
       },
       {
         path: "/ViewShop/:id",
-        element: <ProductDetail />
+        element: <ProductDetail />,
       },
-
       {
         path: "/HotDeals",
-        Component: HotDeals
+        Component: HotDeals,
       },
       {
         path: "/EidCollection",
-        Component: EidCollection
+        Component: EidCollection,
       },
       {
         path: "/BoishakhiCollection",
-        Component: BoishakhiCollection
-      }
+        Component: BoishakhiCollection,
+      },
+      // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
+      {
+        path: "/signin",
+        element: <SignIn />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
+      },
+      {
+        path: "/recover-password",
+        element: <RecoverPassword />,
+      },
     ],
   },
-  { path: "*", element: <NotF /> }
+  { path: "*", element: <NotF /> },
 ]);

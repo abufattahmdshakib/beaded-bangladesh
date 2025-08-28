@@ -16,7 +16,7 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex justify-between items-center px-12">
                 {/* Left navlinks */}
-                <div className="flex items-center gap-6 md:gap-4 lg:gap-6 text-[#1E1E1E] text-[17px] md:text-[14px]  lg:text-[17px] font-[400] jost-font-uppercase mb-6">
+                <div className="flex items-center gap-6 md:gap-4 lg:gap-6 text-[#1E1E1E] text-[17px] md:text-[14px] lg:text-[17px] font-[400] jost-font-uppercase mb-6">
                     <NavLink
                         to="/ViewShop"
                         className={({ isActive }) =>
@@ -53,13 +53,15 @@ const Navbar = () => {
 
                 {/* Right user/cart */}
                 <div className="flex items-center gap-6 md:text-[14px] lg:text-[17px] text-[#1E1E1E] jost-font-uppercase mb-6">
+                    {/* User / Auth */}
                     <div className="flex items-center gap-2">
                         <img src={userlogo} alt="userlogo" />
-                        <Link>Sign In</Link>
+                        <Link to="/signin">Sign In</Link>
                     </div>
+                    {/* Cart */}
                     <div className="flex items-center gap-2">
                         <img src={cartlogo} alt="shopping-bag" />
-                        <Link>CART: 0</Link>
+                        <Link to="/cart">CART: 0</Link>
                     </div>
                 </div>
             </div>
