@@ -13,7 +13,7 @@ import ProductDetail from '../Components/ViewShop/ProductDetail';
 import SignIn from '../pages/Auth/SignIn';
 import SignUp from '../pages/Auth/SignUp';
 import RecoverPassword from '../pages/Auth/RecoverPassword';
-import UserProfile from '../pages/UserProfile';
+import UserProfile from '../pages/UserProfile/UserProfile';
 
 export const router = createBrowserRouter([
   {
@@ -58,7 +58,7 @@ export const router = createBrowserRouter([
         element: <RecoverPassword />,
       },
       {
-        path:"/profile" ,
+        path:"/UserProfile" ,
       element: <UserProfile />
       }
     ],

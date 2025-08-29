@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import productsData from "../../../src/products";
 import { FaHeart } from "react-icons/fa";
@@ -7,12 +7,10 @@ import { AuthContext } from "../../pages/Auth/AuthProvider";
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { wishlist, setWishlist } = useContext(AuthContext);
+  const { wishlist, addToWishlist } = useContext(AuthContext); // context
 
-  // শুরুতে clicked ProductCard এর image
   const initialProduct = productsData.find((p) => p.id === Number(id));
   const [mainImage, setMainImage] = useState(initialProduct?.image);
-  const [isInWishlist, setIsInWishlist] = useState(false);
 
   if (!initialProduct)
     return <p className="text-center mt-10 text-lg">Product not found</p>;
@@ -21,30 +19,14 @@ const ProductDetail = () => {
     (p) => p.id === initialProduct.id
   );
 
-  // ৩টা thumbnail
   const thumbnails = [
     initialProduct.image,
     productsData[currentIndex + 1]?.image,
     productsData[currentIndex + 2]?.image,
   ].filter(Boolean);
 
-  // currentImage অনুযায়ী product খুঁজে নাও
   const product = productsData.find((p) => p.image === mainImage);
-
-  // Wishlist check
-  useEffect(() => {
-    const inWishlist = wishlist.some((item) => item.id === product.id);
-    setIsInWishlist(inWishlist);
-  }, [wishlist, product.id]);
-
-  // Toggle wishlist
-  const handleToggleWishlist = () => {
-    if (isInWishlist) {
-      setWishlist((prev) => prev.filter((item) => item.id !== product.id));
-    } else {
-      setWishlist((prev) => [...prev, product]);
-    }
-  };
+  const isInWishlist = wishlist.some((item) => item.id === product.id);
 
   return (
     <div className="border-t-1 border-gray-400 mb-14 md:mb-0">
@@ -85,31 +67,29 @@ const ProductDetail = () => {
 
           {/* Product Details */}
           <div className="flex-1 mt-4 md:mt-0">
-            <h1 className="jost-font-uppercase text-[#7D7D7D] text-sm md:text-[20px] mb-4">
+            <h1 className="text-[#7D7D7D] text-sm md:text-[20px] mb-4">
               {product.name}
             </h1>
-            <h2 className="jost-font-uppercase text-lg md:text-2xl font-semibold mb-2 text-[24px] text-[#1E1E1E]">
+            <h2 className="text-lg md:text-2xl font-semibold mb-2 text-[#1E1E1E]">
               {product.title}
             </h2>
-            <p className="text-[#00B5A5] jost-font-uppercase font-[400] text-xl md:text-[32px] mb-4">
-              {product.price}
-            </p>
-            <p className="text-[#333333] text-sm md:text-[14px] jost-font-capitalize mb-3 border-t-[1px] border-[#D9D9D9] pt-5 mt-5">
+            <p className="text-[#00B5A5] text-xl md:text-[32px] mb-4">{product.price}</p>
+            <p className="text-[#333333] text-sm md:text-[14px] mb-3 border-t-[1px] border-[#D9D9D9] pt-5 mt-5">
               {product.description}
             </p>
-            <p className="text-[#333333] text-sm md:text-[14px] jost-font-capitalize border-b-[1px] border-[#D9D9D9] pb-5 mb-5">
+            <p className="text-[#333333] text-sm md:text-[14px] border-b-[1px] border-[#D9D9D9] pb-5 mb-5">
               {product.brand_notice}
             </p>
 
             <button
-              className="flex items-center gap-2 jost-font-uppercase font-[400] text-[#1E1E1E] text-[14px] mt-8"
-              onClick={handleToggleWishlist}
+              className="flex items-center gap-2 text-[#1E1E1E] text-[14px] mt-8"
+              onClick={() => addToWishlist(product)} // context toggle
             >
               <FaHeart style={{ color: isInWishlist ? "red" : "#9C9C9C" }} />
-              {isInWishlist ? "Add to Wishlist" : "Add to Wishlist"}
+              {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
             </button>
 
-            <button className="jost-font-uppercase font-[400] text-[#1E1E1E] text-[14px] border-2 border-[#7D7D7D] px-10 py-2 rounded-full transition mt-5">
+            <button className="text-[#1E1E1E] text-[14px] border-2 border-[#7D7D7D] px-10 py-2 rounded-full transition mt-5">
               Add to Cart
             </button>
           </div>

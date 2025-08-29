@@ -129,7 +129,7 @@ const MobileNavbar = () => {
                 {userDropdownOpen && (
                   <div className="flex flex-col mt-2 ml-12 gap-2">
                     <Link
-                      to="/profile"
+                      to="/UserProfile"
                       onClick={handleClose}
                       className="text-left text-[#1E1E1E] font-[400] hover:underline"
                     >

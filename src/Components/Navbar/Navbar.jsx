@@ -64,7 +64,7 @@ const Navbar = () => {
                                             <span className="pl-2 text-[#00B5A5] jost-font-uppercase py-2 border-b-2 font-[600]">{user.displayName || "User"}</span>
                                         </div>
                                         <Link 
-                                            to="/profile" 
+                                            to="/UserProfile" 
                                             className="jost-font-uppercase text-[#1E1E1E] px-4 py-2 hover:bg-gray-100"
                                             onClick={() => setDropdownOpen(false)} // close on click
                                         >
