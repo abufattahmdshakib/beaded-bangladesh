@@ -5,10 +5,13 @@ import cartlogo from '../../../src/assets/shopping-bag.png';
 import { Link, NavLink } from 'react-router-dom';
 import MobileNavbar from './MobileNavbar';
 import { AuthContext } from "../../../src/pages/Auth/AuthProvider";
+import YourCart from '../../../src/pages/Cart/YourCart';
 
 const Navbar = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut, cart = [] } = useContext(AuthContext);
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
+
     const dropdownRef = useRef(null);
 
     const handleLogout = () => {
@@ -63,15 +66,15 @@ const Navbar = () => {
                                         <div className='mb-6'>
                                             <span className="pl-2 text-[#00B5A5] jost-font-uppercase py-2 border-b-2 font-[600]">{user.displayName || "User"}</span>
                                         </div>
-                                        <Link 
-                                            to="/UserProfile" 
+                                        <Link
+                                            to="/UserProfile"
                                             className="jost-font-uppercase text-[#1E1E1E] px-4 py-2 hover:bg-gray-100"
-                                            onClick={() => setDropdownOpen(false)} // close on click
+                                            onClick={() => setDropdownOpen(false)}
                                         >
                                             My Profile
                                         </Link>
-                                        <button 
-                                            onClick={handleLogout} 
+                                        <button
+                                            onClick={handleLogout}
                                             className="jost-font-uppercase text-[#1E1E1E] px-4 py-2 text-left hover:bg-gray-100 w-full"
                                         >
                                             Sign Out
@@ -86,16 +89,32 @@ const Navbar = () => {
                             </div>
                         )}
                     </div>
+
                     {/* Cart */}
-                    <div className="flex items-center gap-2">
-                        <img src={cartlogo} alt="shopping-bag" />
-                        <Link to="/cart">CART: 0</Link>
+                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => setIsCartOpen(true)}>
+                        <img src={cartlogo} alt="cart" />
+                        <span>CART: {cart.length}</span>
                     </div>
                 </div>
             </div>
 
             {/* Mobile Navbar */}
             <MobileNavbar />
+
+            {/* Cart Popup */}
+            {isCartOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+                    <div className="bg-white max-w-6xl w-full p-6 relative rounded-md overflow-auto max-h-[90vh]">
+                        <button
+                            onClick={() => setIsCartOpen(false)}
+                            className="absolute top-4 right-4 text-xl font-bold"
+                        >
+                            X
+                        </button>
+                        <YourCart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

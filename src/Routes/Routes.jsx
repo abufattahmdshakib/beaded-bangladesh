@@ -16,6 +16,7 @@ import RecoverPassword from '../pages/Auth/RecoverPassword';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import ChangePassword from '../pages/UserProfile/ChangePassword';
 import AddNewAddress from '../pages/UserProfile/AddNewAddress';
+import YourCart from '../pages/Cart/YourCart';
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,11 @@ export const router = createBrowserRouter([
         path: "/BoishakhiCollection",
         Component: BoishakhiCollection,
       },
+      {
+        path: "/Cart",
+        element: <YourCart />   
+      },
+
       // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
       {
         path: "/signin",

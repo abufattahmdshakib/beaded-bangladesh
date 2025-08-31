@@ -3,11 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import productsData from "../../../src/products";
 import { FaHeart } from "react-icons/fa";
 import { AuthContext } from "../../pages/Auth/AuthProvider";
+import Swal from "sweetalert2";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { wishlist, addToWishlist } = useContext(AuthContext); // context
+  const { wishlist, addToWishlist, cart, addToCart } = useContext(AuthContext);
 
   const initialProduct = productsData.find((p) => p.id === Number(id));
   const [mainImage, setMainImage] = useState(initialProduct?.image);
@@ -15,9 +16,7 @@ const ProductDetail = () => {
   if (!initialProduct)
     return <p className="text-center mt-10 text-lg">Product not found</p>;
 
-  const currentIndex = productsData.findIndex(
-    (p) => p.id === initialProduct.id
-  );
+  const currentIndex = productsData.findIndex((p) => p.id === initialProduct.id);
 
   const thumbnails = [
     initialProduct.image,
@@ -27,6 +26,28 @@ const ProductDetail = () => {
 
   const product = productsData.find((p) => p.image === mainImage);
   const isInWishlist = wishlist.some((item) => item.id === product.id);
+
+  const handleAddToCart = (product) => {
+    const exists = cart.some((item) => item.id === product.id);
+    if (exists) {
+      Swal.fire({
+        icon: "info",
+        title: "Already Added",
+        text: "This product is already in your cart.",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    } else {
+      addToCart(product);
+      Swal.fire({
+        icon: "success",
+        title: "Added!",
+        text: "Product added to cart successfully.",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+    }
+  };
 
   return (
     <div className="border-t-1 border-gray-400 mb-14 md:mb-0">
@@ -83,13 +104,16 @@ const ProductDetail = () => {
 
             <button
               className="flex items-center gap-2 text-[#1E1E1E] text-[14px] mt-8"
-              onClick={() => addToWishlist(product)} // context toggle
+              onClick={() => addToWishlist(product)}
             >
               <FaHeart style={{ color: isInWishlist ? "red" : "#9C9C9C" }} />
               {isInWishlist ? "Remove from Wishlist" : "Add to Wishlist"}
             </button>
 
-            <button className="text-[#1E1E1E] text-[14px] border-2 border-[#7D7D7D] px-10 py-2 rounded-full transition mt-5">
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="text-[#1E1E1E] text-[14px] border-2 border-[#7D7D7D] px-10 py-2 rounded-full transition mt-5"
+            >
               Add to Cart
             </button>
           </div>

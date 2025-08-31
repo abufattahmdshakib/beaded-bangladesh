@@ -5,10 +5,12 @@ import cartlogo from "../../../src/assets/shopping-bag.png";
 import { Link, NavLink } from "react-router-dom";
 import { HiMenu, HiX } from "react-icons/hi";
 import { AuthContext } from "../../../src/pages/Auth/AuthProvider";
+import YourCart from '../../../src/pages/Cart/YourCart';
 
 const MobileNavbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false); // ✅ Cart popup state
   const { user, logOut } = useContext(AuthContext);
   const userRef = useRef(null);
 
@@ -45,7 +47,9 @@ const MobileNavbar = () => {
           </button>
         ) : (
           <>
-            <Link to="/"><img className="w-[120px] h-[36px]" src={logo} alt="Logo" /></Link>
+            <Link to="/">
+              <img className="w-[120px] h-[36px]" src={logo} alt="Logo" />
+            </Link>
             <button onClick={handleClose}>
               <HiX size={20} className="text-black" />
             </button>
@@ -54,15 +58,17 @@ const MobileNavbar = () => {
 
         {!menuOpen && (
           <div className="absolute left-1/2 transform -translate-x-1/2">
-            <Link to="/"><img className="w-[120px] h-[36px]" src={logo} alt="Logo" /></Link>
+            <Link to="/">
+              <img className="w-[120px] h-[36px]" src={logo} alt="Logo" />
+            </Link>
           </div>
         )}
 
         {!menuOpen && (
           <div>
-            <Link to="/cart">
+            <button onClick={() => setIsCartOpen(true)}>
               <img src={cartlogo} alt="shopping-bag" />
-            </Link>
+            </button>
           </div>
         )}
       </div>
@@ -73,7 +79,9 @@ const MobileNavbar = () => {
           <NavLink
             to="/ViewShop"
             className={({ isActive }) =>
-              `text-[17px] ${isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"}`
+              `text-[17px] ${
+                isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"
+              }`
             }
             onClick={handleClose}
           >
@@ -83,7 +91,9 @@ const MobileNavbar = () => {
           <NavLink
             to="/HotDeals"
             className={({ isActive }) =>
-              `text-[17px] ${isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"}`
+              `text-[17px] ${
+                isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"
+              }`
             }
             onClick={handleClose}
           >
@@ -93,7 +103,9 @@ const MobileNavbar = () => {
           <NavLink
             to="/EidCollection"
             className={({ isActive }) =>
-              `text-[17px] ${isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"}`
+              `text-[17px] ${
+                isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"
+              }`
             }
             onClick={handleClose}
           >
@@ -103,7 +115,9 @@ const MobileNavbar = () => {
           <NavLink
             to="/BoishakhiCollection"
             className={({ isActive }) =>
-              `text-[17px] ${isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"}`
+              `text-[17px] ${
+                isActive ? "text-[#1E1E1E] font-bold" : "text-[#1E1E1E]"
+              }`
             }
             onClick={handleClose}
           >
@@ -123,7 +137,9 @@ const MobileNavbar = () => {
                     alt="userimg"
                     className="w-10 h-10 rounded-full border-3 border-[#00B5A5]"
                   />
-                  <span className="text-[#00B5A5] jost-font-uppercase border-b-2 font-[500]">{user.displayName || "User"}</span>
+                  <span className="text-[#00B5A5] jost-font-uppercase border-b-2 font-[500]">
+                    {user.displayName || "User"}
+                  </span>
                 </div>
 
                 {userDropdownOpen && (
@@ -145,7 +161,11 @@ const MobileNavbar = () => {
                 )}
               </div>
             ) : (
-              <Link to="/signin" onClick={handleClose} className="flex items-center gap-2">
+              <Link
+                to="/signin"
+                onClick={handleClose}
+                className="flex items-center gap-2"
+              >
                 <img src={userlogo} alt="userlogo" className="w-6 h-6" />
                 Sign In
               </Link>
@@ -153,6 +173,9 @@ const MobileNavbar = () => {
           </div>
         </div>
       )}
+
+      {/* ✅ Cart popup */}
+      <YourCart isOpen={isCartOpen} setIsOpen={setIsCartOpen} />
     </div>
   );
 };

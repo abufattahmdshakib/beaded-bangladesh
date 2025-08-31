@@ -25,7 +25,7 @@ const FiltersSection = ({
     return (
         <section
             className={`w-full mx-auto md:w-4/12 lg:w-4/12 mt-24 px-4 py-4 md:py-0 md:px-0
-                fixed top-0 left-0 bg-white z-50
+                fixed top-0 left-0 bg-white z-40
                 h-[calc(100vh-5rem)]
                 transform ${showFilters ? "translate-y-0" : "-translate-y-[calc(100%+7rem)]"}
                 transition-transform duration-500 ease-in-out
