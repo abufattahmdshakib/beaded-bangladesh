@@ -15,6 +15,7 @@ import SignUp from '../pages/Auth/SignUp';
 import RecoverPassword from '../pages/Auth/RecoverPassword';
 import UserProfile from '../pages/UserProfile/UserProfile';
 import ChangePassword from '../pages/UserProfile/ChangePassword';
+import AddNewAddress from '../pages/UserProfile/AddNewAddress';
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
         path: "/change-password",
         element: <ChangePassword />,
       },
+      {
+        path: "/add-new-address",
+        element: <AddNewAddress />
+      }
     ],
   },
 
