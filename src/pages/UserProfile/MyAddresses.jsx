@@ -1,23 +1,55 @@
 import React, { useState } from "react";
 import { FaHome, FaBriefcase, FaEye, FaEdit, FaTrash, FaPlus } from "react-icons/fa";
-import AddNewAddress from "./AddNewAddress"; 
+import AddNewAddress from "./AddNewAddress";
+import EditAddress from "./EditAddress";
 
 const MyAddresses = () => {
   const [showAddForm, setShowAddForm] = useState(false);
+  const [editAddress, setEditAddress] = useState(null);
 
   const addresses = [
-    { type: "HOME", division: "Dhaka", district: "Dhaka", area: "Gulshan", zipCode: "1401", fullAddress: "House-54, Road-8, Nikatan, Gulshan Dhaka", default: true, buttonText: "Default Address", buttonColor: "#EA9442" },
-    { type: "WORK", division: "Dhaka", district: "Dhaka", area: "Banani", zipCode: "1213", fullAddress: "House-23, Road-12, Banani, Dhaka", default: false, buttonText: "Set AS Address", buttonColor: "#1E1E1E" },
+    {
+      type: "HOME",
+      division: "Dhaka",
+      district: "Dhaka",
+      area: "Gulshan",
+      zipCode: "1401",
+      fullAddress: "House-54, Road-8, Nikatan, Gulshan Dhaka",
+      default: true,
+      buttonText: "Default Address",
+      buttonColor: "#EA9442",
+    },
+    {
+      type: "WORK",
+      division: "Dhaka",
+      district: "Dhaka",
+      area: "Banani",
+      zipCode: "1213",
+      fullAddress: "House-23, Road-12, Banani, Dhaka",
+      default: false,
+      buttonText: "Set AS Address",
+      buttonColor: "#1E1E1E",
+    },
   ];
 
   const getIcon = (type) => (
-    <span className="text-[#1E1E1E] text-xl mr-2">{type === "HOME" ? <FaHome /> : <FaBriefcase />}</span>
+    <span className="text-[#1E1E1E] text-xl mr-2">
+      {type === "HOME" ? <FaHome /> : <FaBriefcase />}
+    </span>
   );
 
   return (
     <div className="p-6 space-y-6">
       {showAddForm ? (
         <AddNewAddress closeForm={() => setShowAddForm(false)} />
+      ) : editAddress ? (
+        <EditAddress
+          initialData={editAddress}
+          onSave={(updated) => {
+            console.log("Updated Address:", updated);
+            setEditAddress(null);
+          }}
+        />
       ) : (
         <div className="flex flex-col md:flex-row gap-6">
           {addresses.map((addr, idx) => (
@@ -30,7 +62,10 @@ const MyAddresses = () => {
                   </div>
                   <div className="flex items-center gap-3 text-[#1E1E1E]">
                     <FaEye className="cursor-pointer" />
-                    <FaEdit className="cursor-pointer" />
+                    <FaEdit
+                      className="cursor-pointer"
+                      onClick={() => setEditAddress(addr)}
+                    />
                     <FaTrash className="cursor-pointer" />
                   </div>
                 </div>
