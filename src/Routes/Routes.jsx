@@ -14,6 +14,7 @@ import SignIn from '../pages/Auth/SignIn';
 import SignUp from '../pages/Auth/SignUp';
 import RecoverPassword from '../pages/Auth/RecoverPassword';
 import UserProfile from '../pages/UserProfile/UserProfile';
+import ChangePassword from '../pages/UserProfile/ChangePassword';
 
 export const router = createBrowserRouter([
   {
@@ -58,9 +59,13 @@ export const router = createBrowserRouter([
         element: <RecoverPassword />,
       },
       {
-        path:"/UserProfile" ,
-      element: <UserProfile />
-      }
+        path: "/UserProfile",
+        element: <UserProfile />
+      },
+      {
+        path: "/change-password",
+        element: <ChangePassword />,
+      },
     ],
   },
 

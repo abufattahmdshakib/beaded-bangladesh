@@ -30,11 +30,6 @@ const AuthProvider = ({ children }) => {
     setWishlist(savedWishlist);
   }, []);
 
-  // Sync wishlist to localStorage whenever it changes
-  // useEffect(() => {
-  //   localStorage.setItem("wishlist", JSON.stringify(wishlist));
-  // }, [wishlist]);
-
 const addToWishlist = (product) => {
   setWishlist((prev) => {
     let updated;
