@@ -63,7 +63,7 @@ const ProceedToCheckout = () => {
 
                 {/* Step Content */}
                 <div
-                    className="flex-1 p-6 pt-10 border rounded-lg shadow-md min-h-[200px]"
+                    className="flex-1 p-2 pt-10 min-h-[200px]"
                     data-aos="fade-up"
                 >
                     {step === 1 && <DeliveryInfo />}
