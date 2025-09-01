@@ -1,5 +1,5 @@
-import React, { createContext, useEffect, useState } from 'react';
-import app from '../../firebase/firebase.config';
+import React, { createContext, useEffect, useState } from "react";
+import app from "../../firebase/firebase.config";
 import {
   getAuth,
   onAuthStateChanged,
@@ -8,8 +8,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
-  sendPasswordResetEmail
-} from 'firebase/auth';
+  sendPasswordResetEmail,
+} from "firebase/auth";
 
 export const AuthContext = createContext();
 const auth = getAuth(app);
@@ -22,16 +22,9 @@ const AuthProvider = ({ children }) => {
 
   const provider = new GoogleAuthProvider();
 
-  // Load wishlist from localStorage on mount
-  useEffect(() => {
-    console.log({
-      wishlist: JSON.parse(localStorage.getItem("wishlist"))
-    });
-    const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
-    setWishlist(savedWishlist);
-  }, []);
-
+  // Wishlist Functions
   const addToWishlist = (product) => {
+    if (!user) return; // not logged in
     setWishlist((prev) => {
       let updated;
       if (prev.some((item) => item.id === product.id)) {
@@ -39,20 +32,46 @@ const AuthProvider = ({ children }) => {
       } else {
         updated = [...prev, product];
       }
-      localStorage.setItem("wishlist", JSON.stringify(updated));
+      localStorage.setItem(`wishlist_${user.uid}`, JSON.stringify(updated));
       return updated;
     });
   };
 
+  // Cart Functions
+  const addToCart = (product) => {
+    if (!user) return;
+    setCart((prev) => {
+      let updated;
+      const existing = prev.find((item) => item.id === product.id);
 
+      if (existing) {
+        updated = prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        );
+      } else {
+        updated = [...prev, { ...product, quantity: 1 }];
+      }
+
+      localStorage.setItem(`cart_${user.uid}`, JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const removeFromCart = (productId) => {
+    if (!user) return;
+    setCart((prev) => {
+      const updated = prev.filter((item) => item.id !== productId);
+      localStorage.setItem(`cart_${user.uid}`, JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  // Auth Functions
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
-  };
-
-  const logOut = () => {
-    setLoading(true);
-    return signOut(auth);
   };
 
   const login = (email, password) => {
@@ -70,70 +89,54 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
+  const logOut = () => {
+    setLoading(true);
+    setWishlist([]);
+    setCart([]);
+    return signOut(auth);
+  };
+
+  // Observe Auth State
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+
+      if (currentUser) {
+        const savedWishlist =
+          JSON.parse(localStorage.getItem(`wishlist_${currentUser.uid}`)) || [];
+        setWishlist(savedWishlist);
+
+        const savedCart =
+          JSON.parse(localStorage.getItem(`cart_${currentUser.uid}`)) || [];
+        setCart(savedCart);
+      } else {
+        setWishlist([]);
+        setCart([]);
+      }
+
       setLoading(false);
     });
+
     return () => unsubscribe();
   }, []);
 
-  // Add to Cart function
-  // Load cart from localStorage on mount
-useEffect(() => {
-  const savedCart = JSON.parse(localStorage.getItem("cart")) || [];
-  setCart(savedCart);
-}, []);
-
-// Add to cart function with localStorage persistence
-const addToCart = (product) => {
-  setCart((prev) => {
-    let updated;
-    const existing = prev.find((item) => item.id === product.id);
-
-    if (existing) {
-      // If product already in cart, increase quantity
-      updated = prev.map((item) =>
-        item.id === product.id
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-    } else {
-      // Add new product with quantity 1
-      updated = [...prev, { ...product, quantity: 1 }];
-    }
-
-    // Save to localStorage
-    localStorage.setItem("cart", JSON.stringify(updated));
-    return updated;
-  });
-};
-
-// Optional: remove from cart
-const removeFromCart = (productId) => {
-  setCart((prev) => {
-    const updated = prev.filter((item) => item.id !== productId);
-    localStorage.setItem("cart", JSON.stringify(updated));
-    return updated;
-  });
-};
-
-
   return (
-    <AuthContext.Provider value={{
-      user,
-      loading,
-      wishlist,
-      addToWishlist,
-      addToCart, // <-- add here
-      cart, 
-      removeFromCart,  // <-- add remove function if needed
-      createUser,
-      logOut,
-      login,
-      handleWithGoogle,
-      resetPassword
-    }}>
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        wishlist,
+        addToWishlist,
+        cart,
+        addToCart,
+        removeFromCart,
+        createUser,
+        logOut,
+        login,
+        handleWithGoogle,
+        resetPassword,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
