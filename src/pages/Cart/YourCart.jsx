@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Minus, Plus, Trash2, X } from "lucide-react";
 import { AuthContext } from "../Auth/AuthProvider";
+import { Link } from "react-router-dom";
 
 const YourCart = ({ isOpen, setIsOpen }) => {
     const { cart = [], setCart, removeFromCart } = useContext(AuthContext) || {};
@@ -91,7 +92,7 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                             </p>
                         ) : (
                             cart.map((item, idx) => (
-                                <div className="grid grid-cols-[3fr_2fr_1fr_1fr] items-center py-4 gap-4 md:grid-cols-[3fr_2fr_1fr_1fr]">
+                                <div key={item.id || idx}  className="grid grid-cols-[3fr_2fr_1fr_1fr] items-center py-4 gap-4 md:grid-cols-[3fr_2fr_1fr_1fr]">
                                     {/* Image */}
                                     <div className="flex items-center gap-3">
                                         <div className="flex-shrink-0 overflow-hidden w-16 h-16">
@@ -171,8 +172,8 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                         </div>
 
                         {/* Checkout button */}
-                        <button className="jost-font-uppercase w-full border text-white py-3 rounded-full font-[500]">
-                            Proceed to Checkout
+                        <button onClick={() => setIsOpen(false)} className="jost-font-uppercase w-full border text-white py-3 rounded-full font-[500]">
+                            <Link to="/Cart">Proceed to Checkout</Link>
                         </button>
                     </div>
                 </div>
