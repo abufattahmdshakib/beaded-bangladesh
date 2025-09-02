@@ -67,7 +67,7 @@ const ProceedToCheckout = () => {
                     data-aos="fade-up"
                 >
                     {step === 1 && <DeliveryInfo setStep={setStep} />}
-                    {step === 2 && <ReviewOrder />}
+                    {step === 2 && <ReviewOrder setStep={setStep} />}
                     {step === 3 && <Confirmation />}
                 </div>
         </div>

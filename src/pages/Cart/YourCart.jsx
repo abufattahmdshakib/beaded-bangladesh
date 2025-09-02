@@ -117,7 +117,7 @@ const YourCart = ({ isOpen, setIsOpen }) => {
 
                                     {/* Quantity */}
                                     <div className="flex justify-start">
-                                        <div className="jost-font-uppercase flex items-center justify-between gap-2 border border-black rounded-full px-3 py-[2px] w-20">
+                                        <div className="jost-font-uppercase flex items-center justify-between gap-2 border border-black rounded-full px-3 py-[2px] w-26">
                                             <button onClick={() => decreaseQuantity(item.id)}><Minus size={18} /></button>
                                             <span>{item.quantity}</span>
                                             <button onClick={() => increaseQuantity(item.id)}><Plus size={18} /></button>
