@@ -9,11 +9,11 @@ import Confirmation from "./Confirmation";
 const ProceedToCheckout = () => {
     const [step, setStep] = useState(1);
 
-    const steps = [
+     const steps = [
         { id: 1, label: "Delivery Info" },
         { id: 2, label: "Review Order" },
         { id: 3, label: "Confirmation" },
-    ];
+     ];
 
     useEffect(() => {
         AOS.init({ duration: 600, once: true });
@@ -27,7 +27,6 @@ const ProceedToCheckout = () => {
                 <div className="relative w-full flex items-center justify-between">
                     {steps.map((s, idx) => (
                         <div key={s.id} className="flex-1 flex flex-col items-center relative cursor-pointer"
-                            onClick={() => setStep(s.id)}
                         >
                             {/* Line to next step */}
                             {idx < steps.length - 1 && (
@@ -44,7 +43,7 @@ const ProceedToCheckout = () => {
                             {/* Circle */}
                             <div
                                 className={`w-10 h-10 rounded-full flex items-center justify-center z-10
-      ${step >= s.id ? "bg-green-600 text-white" : "bg-[#D9D9D9] text-[#1E1E1E]"}
+      ${step >= s.id ? "bg-green-600 text-[#FFFFFF]" : "bg-[#D9D9D9] text-[#1E1E1E]"}
     `}
                             >
                                 {s.id}
@@ -61,16 +60,16 @@ const ProceedToCheckout = () => {
                     ))}
                 </div>
 
-                {/* Step Content */}
+            </div>
+              {/* Step Content */}
                 <div
-                    className="flex-1 p-2 pt-10 min-h-[200px]"
+                    className="flex-1 max-w-5xl mx-auto p-2  min-h-[250px]"
                     data-aos="fade-up"
                 >
-                    {step === 1 && <DeliveryInfo />}
+                    {step === 1 && <DeliveryInfo setStep={setStep} />}
                     {step === 2 && <ReviewOrder />}
                     {step === 3 && <Confirmation />}
                 </div>
-            </div>
         </div>
     );
 };
