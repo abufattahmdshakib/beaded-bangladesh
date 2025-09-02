@@ -18,6 +18,7 @@ import ChangePassword from '../pages/UserProfile/ChangePassword';
 import AddNewAddress from '../pages/UserProfile/AddNewAddress';
 import YourCart from '../pages/Cart/YourCart';
 import ProceedToCheckout from '../pages/Cart/ProceedToCheckout';
+import ViewYourOrder from '../pages/Cart/ViewYourOrder';
 
 export const router = createBrowserRouter([
   {
@@ -50,7 +51,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/Cart",
-        element: <ProceedToCheckout />,
+        element: <ProceedToCheckout />
+      },
+      {
+        path: "/view-your-order",
+        element: <ViewYourOrder />
       },
       // ✅ SignIn & SignUp inside Root layout (if you want same navbar/footer)
       {

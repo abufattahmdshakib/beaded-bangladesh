@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Minus, Plus, Trash2, X } from "lucide-react";
 import { AuthContext } from "../Auth/AuthProvider";
 import { Link } from "react-router-dom";
@@ -54,9 +54,17 @@ const YourCart = ({ isOpen, setIsOpen }) => {
 
     if (!isOpen) return null;
 
+    // title slice    
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 640);
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
     return (
         <div className="fixed inset-0 z-[9999] bg-black/50 flex justify-center items-start sm:pt-20 px-2 sm:px-4">
-            <div className="bg-white w-full max-w-6xl relative max-h-[90vh] shadow-2xl flex flex-col sm:flex-row">
+            <div className="bg-white w-full max-w-6xl relative  max-h-[90vh] shadow-2xl flex flex-col sm:flex-row">
                 {/* Section One - Cart Items */}
                 <div className="flex-1 overflow-auto p-4 sm:p-8">
                     {/* Header */}
@@ -92,8 +100,11 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                             </p>
                         ) : (
                             cart.map((item, idx) => (
-                                <div key={item.id || idx}  className="grid grid-cols-[3fr_2fr_1fr_1fr] items-center py-4 gap-4 md:grid-cols-[3fr_2fr_1fr_1fr]">
-                                    {/* Image */}
+                                <div
+                                    key={item.id || idx}
+                                    className="grid grid-cols-[3fr_2fr_1fr_1fr] items-center py-4 gap-1 md:grid-cols-[3fr_2fr_1fr_1fr]"
+                                >
+                                    {/* Image + Title */}
                                     <div className="flex items-center gap-3">
                                         <div className="flex-shrink-0 overflow-hidden w-16 h-16">
                                             <img
@@ -102,10 +113,12 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                                                 className="w-full h-full object-cover"
                                             />
                                         </div>
-
-                                        {/* Title + Mobile Prices */}
                                         <div className="flex flex-col justify-center">
-                                            <h3 className="jost-font-uppercase text-[14px] text-[#1E1E1E] truncate">{item.title}</h3>
+                                            <h3 className=" jost-font-uppercase text-[14px] text-[#1E1E1E] truncate">
+                                                {isMobile
+                                                    ? item.title.slice(0, 19) + (item.title.length > 15 ? "..." : "")
+                                                    : item.title}
+                                            </h3>
 
                                             {/* Mobile Only Price Info */}
                                             <div className="block md:hidden text-[14px] text-[#6D6D6D] mt-1">
@@ -116,26 +129,41 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                                     </div>
 
                                     {/* Quantity */}
-                                    <div className="flex justify-start">
+                                    <div className="flex flex-col justify-start">
                                         <div className="jost-font-uppercase flex items-center justify-between gap-2 border border-black rounded-full px-3 py-[2px] w-26">
-                                            <button onClick={() => decreaseQuantity(item.id)}><Minus size={18} /></button>
+                                            <button onClick={() => decreaseQuantity(item.id)}>
+                                                <Minus size={18} />
+                                            </button>
                                             <span>{item.quantity}</span>
-                                            <button onClick={() => increaseQuantity(item.id)}><Plus size={18} /></button>
+                                            <button onClick={() => increaseQuantity(item.id)}>
+                                                <Plus size={18} />
+                                            </button>
+                                        </div>
+
+                                        {/* Mobile Action below Quantity */}
+                                        <div className="md:hidden mt-2">
+                                            <button
+                                                className="text-red-500"
+                                                onClick={() => removeFromCart(item.id)}
+                                            >
+                                                <Trash2 size={18} />
+                                            </button>
                                         </div>
                                     </div>
-
                                     {/* Price - Desktop only */}
                                     <p className="jost-font-uppercase text-center text-[14px] text-[#1E1E1E] font-[500] hidden md:flex justify-start">
                                         {item.price}
                                     </p>
-                                    {/* Action */}
-                                    <div className="flex justify-end">
-                                        <button className="text-red-500" onClick={() => removeFromCart(item.id)}>
+                                    {/* Action - Desktop only */}
+                                    <div className="hidden md:flex justify-end">
+                                        <button
+                                            className="text-red-500"
+                                            onClick={() => removeFromCart(item.id)}
+                                        >
                                             <Trash2 size={18} />
                                         </button>
                                     </div>
                                 </div>
-
                             ))
                         )}
                     </div>
