@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { RiArrowLeftWideLine, RiArrowRightWideLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom"; // ✅ Added
 import products from "../../../src/products";
 
-
 const OurEarrings = () => {
+    const navigate = useNavigate(); // ✅ Added
     const braceletProducts = products.filter(item => item.name.toUpperCase() === "EARRINGS");
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [cardsPerView, setCardsPerView] = useState(4);
 
-    // Update cardsPerView based on window width
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 1024) setCardsPerView(4); // lg
-            else if (window.innerWidth >= 768) setCardsPerView(3); // md
-            else setCardsPerView(2); // sm
+            if (window.innerWidth >= 1024) setCardsPerView(4);
+            else if (window.innerWidth >= 768) setCardsPerView(3);
+            else setCardsPerView(2);
         };
-        handleResize(); // initial check
+        handleResize();
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -51,7 +51,8 @@ const OurEarrings = () => {
                         {braceletProducts.map((item) => (
                             <div
                                 key={item.id}
-                                className="flex-none mx-2"
+                                onClick={() => navigate(`/ViewShop/${item.id}`)} // ✅ Click navigation
+                                className="flex-none mx-2 cursor-pointer"
                                 style={{ width: `calc(100% / ${cardsPerView} - 0.5rem)` }}
                             >
                                 <img
@@ -77,7 +78,7 @@ const OurEarrings = () => {
                 <div className='flex justify-start items-center mt-2 md:mt-0'>
                     <button
                         onClick={prevSlide}
-                        className="text-black border border-black rounded-full p-2 md:p-2 hover:scale-110 transition"
+                        className="text-black cursor-pointer border border-black rounded-full p-2 md:p-2 hover:scale-110 transition"
                     >
                         <RiArrowLeftWideLine size={20} md:size={28} />
                     </button>
@@ -95,7 +96,7 @@ const OurEarrings = () => {
                 <div className='flex justify-end items-center mt-2 md:mt-0'>
                     <button
                         onClick={nextSlide}
-                        className="text-black border border-black rounded-full p-2 md:p-2 hover:scale-110 transition"
+                        className="text-black cursor-pointer border border-black rounded-full p-2 md:p-2 hover:scale-110 transition"
                     >
                         <RiArrowRightWideLine size={20} md:size={28} />
                     </button>

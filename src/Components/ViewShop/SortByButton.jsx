@@ -10,7 +10,7 @@ const SortByButton = ({ sortOption, setSortOption }) => {
     <div className="relative inline-block text-left">
       <button
         onClick={() => setOpen(!open)}
-        className="flex jost-font-capitalize items-center justify-between w-40 px-4 py-2 border border-gray-300 bg-white text-[#7D7D7D] hover:border-[#00B5A5] focus:outline-none"
+        className="flex jost-font-capitalize cursor-pointer items-center justify-between w-40 px-4 py-2 border border-gray-300 bg-white text-[#7D7D7D] hover:border-[#00B5A5] focus:outline-none"
       >
         {sortOption || "Sort by"}
         <RiArrowDownSLine className="ml-2 text-xl" />
@@ -25,7 +25,7 @@ const SortByButton = ({ sortOption, setSortOption }) => {
                 setSortOption(option);
                 setOpen(false);
               }}
-              className="w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+              className="w-full text-left px-4 py-2 text-sm text-[#1E1E1E] cursor-pointer hover:bg-gray-100"
             >
               {option}
             </button>

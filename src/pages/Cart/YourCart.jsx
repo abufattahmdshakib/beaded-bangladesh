@@ -131,11 +131,11 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                                     {/* Quantity */}
                                     <div className="flex flex-col justify-start">
                                         <div className="jost-font-uppercase flex items-center justify-between gap-2 border border-black rounded-full px-3 py-[2px] w-26">
-                                            <button onClick={() => decreaseQuantity(item.id)}>
+                                            <button className="text-[#7D7D7D]" onClick={() => decreaseQuantity(item.id)}>
                                                 <Minus size={18} />
                                             </button>
-                                            <span>{item.quantity}</span>
-                                            <button onClick={() => increaseQuantity(item.id)}>
+                                            <span className="text-[#1E1E1E]">{item.quantity}</span>
+                                            <button className="text-[#7D7D7D]" onClick={() => increaseQuantity(item.id)}>
                                                 <Plus size={18} />
                                             </button>
                                         </div>
@@ -179,15 +179,15 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                         <div className="space-y-2 text-[13px] sm:text-[14px]">
                             <div className="jost-font-uppercase flex justify-between font[600]">
                                 <span className="text-[#7D7D7D]">Sub-Total:</span>
-                                <span>৳{subTotal}</span>
+                                <span className="text-[#FFFFFF]">৳{subTotal}</span>
                             </div>
                             <div className="jost-font-uppercase flex justify-between font[600]">
                                 <span className="text-[#7D7D7D] ">Delivery Fee:</span>
-                                <span>৳{deliveryFee}</span>
+                                <span className="text-[#FFFFFF]">৳{deliveryFee}</span>
                             </div>
                             <div className="jost-font-uppercase flex justify-between font[600]">
                                 <span className="text-[#7D7D7D]">Discount:</span>
-                                <span>-৳{discount}</span>
+                                <span className="text-[#FFFFFF]">-৳{discount}</span>
                             </div>
                         </div>
                     </div>
@@ -196,7 +196,7 @@ const YourCart = ({ isOpen, setIsOpen }) => {
                         {/* Grand Total row */}
                         <div className="jost-font-uppercase flex justify-between font-[600] text-[15px] sm:text-[16px] mb-6">
                             <span>Grand Total:</span>
-                            <span>৳{grandTotal}</span>
+                            <span className="text-[#FFFFFF]">৳{grandTotal}</span>
                         </div>
 
                         {/* Checkout button */}

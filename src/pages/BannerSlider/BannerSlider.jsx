@@ -21,7 +21,7 @@ const BannerSlider = () => {
               type="button"
               onClick={onClickHandler}
               title={label}
-              className="absolute left-34 md:left-6 lg:left-16 
+              className="absolute cursor-pointer left-34 md:left-6 lg:left-16 
                          md:top-1/2 md:-translate-y-1/2 
                          bottom-18 md:bottom-auto 
                          z-20 text-white border border-white rounded-full p-2 
@@ -37,7 +37,7 @@ const BannerSlider = () => {
               type="button"
               onClick={onClickHandler}
               title={label}
-              className="absolute right-34 md:right-6 lg:right-16  
+              className="absolute cursor-pointer right-34 md:right-6 lg:right-16  
                          md:top-1/2 md:-translate-y-1/2 
                          bottom-18 md:bottom-auto 
                          z-20 text-white border border-white rounded-full p-2 

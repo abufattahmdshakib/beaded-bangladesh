@@ -24,8 +24,10 @@ const ProductsSection = ({ activeTab, activeFilter, setShowFilters }) => {
     if (activeTab === "categories") {
       if (activeFilter === "TOP CATEGORIES") filtered = filtered.filter(p => [5, 6, 7, 8].includes(p.id));
       else if (activeFilter === "OUR BESTSELLERS") filtered = filtered.filter(p => p.sales >= 100);
-      else if (activeFilter === "OUR NECKLACES") filtered = filtered.filter(p => p.name === "NECKLACES");
-      else if (activeFilter === "OUR EARRINGS") filtered = filtered.filter(p => p.name === "EARRINGS");
+      else if (activeFilter === "OUR NECKLACES") filtered = filtered.filter(p => p.name.toUpperCase() === "NECKLACES");
+      else if (activeFilter === "OUR EARRINGS") filtered = filtered.filter(p => p.name.toUpperCase() === "EARRINGS");
+      else if (activeFilter === "BRACELET") filtered = filtered.filter(p => p.name.toUpperCase() === "BRACELET");
+      else if (activeFilter === "MEN’S ACCESSORIES") filtered = filtered.filter(p => p.name.toUpperCase() === "MEN’S ACCESSORIES");
     }
 
     // Sorting logic
@@ -66,7 +68,7 @@ const ProductsSection = ({ activeTab, activeFilter, setShowFilters }) => {
             <div
               key={product.id}
               className="px-1 md:px-0 cursor-pointer"
-              onClick={() => navigate(`/ViewShop/${product.id}`)} // ✅ Navigate
+              onClick={() => navigate(`/ViewShop/${product.id}`)}
             >
               <img
                 src={product.image}

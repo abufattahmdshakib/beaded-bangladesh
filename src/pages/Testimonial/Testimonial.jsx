@@ -3,8 +3,8 @@ import { RiArrowLeftWideLine, RiArrowRightWideLine } from "react-icons/ri";
 
 // Images import
 import mainImg1 from "../../../src/assets/Frame 12.png";
-import mainImg2 from "../../../src/assets/Frame 12.png";
-import mainImg3 from "../../../src/assets/Frame 12.png";
+import mainImg2 from "../../../src/assets/img2.jpg";
+import mainImg3 from "../../../src/assets/img3.jpg";
 
 import subImg1 from "../../../src/assets/format_quote_FILL1_wght400_GRAD0_opsz48 1.png";
 import subImg2 from "../../../src/assets/format_quote_FILL1_wght400_GRAD0_opsz48 1.png";
@@ -19,16 +19,16 @@ const testimonial = [
         mainImage: mainImg1,
     },
     {
-        thumbnail: subImg2,
-        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.2",
-        title: "Ava Nicholls 2",
-        mainImage: mainImg2,
+        "thumbnail": subImg2,
+        "details": "Discover the elegance of Celestia Glow — a perfect blend of modern style and timeless charm. Designed for those who appreciate subtle luxury and fine craftsmanship. Each piece tells a story of sophistication and grace.",
+        "title": "Celestia Glow Necklace",
+        "mainImage": mainImg2,
     },
     {
-        thumbnail: subImg3,
-        details: "Lorem ipsum dolor sit amet consectetur. Purus elementum consequat malesuada amet turpis mollis etiam non. Lobortis molestie sit lacinia facilisi in cras. Consectetur bibendum dictum quam id volutpat aliquet tortor leo. Velit metus feugiat sapien vitae id tempus vitae vitae. Urna enim faucibus sapien consequat venenatis id sit. Amet eget nunc porttitor justo odio volutpat purus nibh aliquet. Amet in sed nulla neque libero.3",
-        title: "Ava Nicholls 3",
-        mainImage: mainImg3,
+        "thumbnail": subImg3,
+        "details": "Luna Essence captures the spirit of individuality and refinement. Crafted with precision, it offers a harmonious balance of beauty and durability. Ideal for making a statement that lasts beyond trends.",
+        "title": "Luna Essence Pendant",
+        "mainImage": mainImg3,
     }
 ];
 
@@ -96,24 +96,16 @@ const Testimonial = () => {
                 />
             </div>
             {/* Navigation buttons */}
-            <div className="md:hidden flex mt-4 md:mt-8 lg:mt-12 gap-8">
+            <div className="md:hidden flex mt-4 md:mt-8 lg:mt-12 gap-8 relative">
                 <button
                     onClick={prevSlide}
-                    className="md:left-6 lg:left-16  
-                               md:top-1/2 md:-translate-y-1/2 
-                               bottom-18 md:bottom-auto 
-                               z-20 text-white border border-white rounded-full p-2 
-                               hover:scale-110 transition"
+                    className="absolute left-6 cursor-pointer z-20 text-white border border-white rounded-full p-2 hover:scale-110 transition"
                 >
                     <RiArrowLeftWideLine size={28} />
                 </button>
                 <button
                     onClick={nextSlide}
-                    className=" md:right-6 lg:right-16  
-                               md:top-1/2 md:-translate-y-1/2 
-                               bottom-18 md:bottom-auto 
-                               z-20 text-white border border-white rounded-full p-2 
-                               hover:scale-110 transition"
+                    className="absolute right-6 cursor-pointer z-20 text-white border border-white rounded-full p-2 hover:scale-110 transition"
                 >
                     <RiArrowRightWideLine size={28} />
                 </button>

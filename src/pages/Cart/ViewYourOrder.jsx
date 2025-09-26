@@ -67,7 +67,7 @@ const ViewYourOrder = () => {
                                         </h3>
                                     </div>
                                     <div className="flex justify-around  sm:gap-4 w-full mt-1 sm:mt-0">
-                                        <p className="jost-font-uppercase text-sm sm:text-base">
+                                        <p className="jost-font-uppercase text-[#1E1E1E] text-sm sm:text-base">
                                             {item.quantity}x
                                         </p>
                                         <p className="jost-font-uppercase text-sm sm:text-base font-medium text-gray-800">
@@ -84,20 +84,20 @@ const ViewYourOrder = () => {
                         <div className="space-y-1 sm:space-y-2 text-sm">
                             <div className="flex jost-font-uppercase justify-between">
                                 <span className="text-gray-600">Sub-Total:</span>
-                                <span>৳{subTotal}</span>
+                                <span className="text-[#1E1E1E]">৳{subTotal}</span>
                             </div>
                             <div className="flex jost-font-uppercase justify-between">
                                 <span className="text-gray-600">Delivery Fee:</span>
-                                <span>৳{deliveryFee}</span>
+                                <span className="text-[#1E1E1E]">৳{deliveryFee}</span>
                             </div>
                             <div className="flex jost-font-uppercase justify-between">
                                 <span className="text-gray-600">Discount:</span>
-                                <span>-৳{discount}</span>
+                                <span className="text-[#1E1E1E]">-৳{discount}</span>
                             </div>
                         </div>
                         <div className="flex jost-font-uppercase justify-between font-semibold text-base mt-3 sm:mt-4 border-t pt-2 sm:pt-4">
-                            <span>Grand Total:</span>
-                            <span>৳{grandTotal}</span>
+                            <span className="text-[#1E1E1E]">Grand Total:</span>
+                            <span className="text-[#1E1E1E]">৳{grandTotal}</span>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@ const ViewYourOrder = () => {
                 <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
                     {/* Section 3 - Delivery Address */}
                     <div className="flex-1 p-3 sm:p-6 bg-white">
-                        <h3 className="text-base sm:text-lg jost-font-capitalize font-semibold mb-2 sm:mb-4">
+                        <h3 className="text-base text-[#1E1E1E] sm:text-lg jost-font-capitalize font-semibold mb-2 sm:mb-4">
                             Delivery Address
                         </h3>
                         <p className="jost-font-uppercase text-sm sm:text-base text-gray-600">
@@ -121,8 +121,10 @@ const ViewYourOrder = () => {
                         </h4>
                         <input
                             type="text"
-                            placeholder="No notes were written"
-                            className="w-full  px-2 sm:px-3 py-2 text-sm jost-font-capitalize"
+                            placeholder="Notes"
+                            className="w-full jost-font-capitalize border border-gray-300 px-3 py-2 
+             focus:outline-none focus:ring-2 focus:ring-[#00B5A5] 
+             placeholder-gray-400"
                         />
                     </div>
                 </div>

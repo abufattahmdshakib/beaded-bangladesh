@@ -53,7 +53,7 @@ const ProductDetail = () => {
     <div className="border-t-1 border-gray-400 mb-14 md:mb-0">
       <div className="w-full px-4 md:w-10/12 md:px-8 mx-auto min-h-screen bg-gray-50 mt-5 md:mt-12">
         <button
-          className="mb-8 text-2xl font-extrabold transition-transform duration-200 ease-in-out hover:scale-110 active:scale-95"
+          className="mb-8 text-2xl font-extrabold text-[#1E1E1E] cursor-pointer transition-transform duration-200 ease-in-out hover:scale-110 active:scale-95"
           onClick={() => navigate(-1)}
         >
           ←
@@ -103,7 +103,7 @@ const ProductDetail = () => {
             </p>
 
             <button
-              className="flex items-center gap-2 text-[#1E1E1E] text-[14px] mt-8"
+              className="flex items-center gap-2 cursor-pointer text-[#1E1E1E] text-[14px] mt-8"
               onClick={() => addToWishlist(product)}
             >
               <FaHeart style={{ color: isInWishlist ? "red" : "#9C9C9C" }} />
@@ -112,7 +112,7 @@ const ProductDetail = () => {
 
             <button
               onClick={() => handleAddToCart(product)}
-              className="text-[#1E1E1E] text-[14px] border-2 border-[#7D7D7D] px-10 py-2 rounded-full transition mt-5"
+              className="text-[#1E1E1E] cursor-pointer text-[14px] border-2 border-[#7D7D7D] px-10 py-2 rounded-full transition mt-5"
             >
               Add to Cart
             </button>

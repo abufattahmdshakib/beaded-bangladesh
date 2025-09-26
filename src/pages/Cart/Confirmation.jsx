@@ -12,7 +12,7 @@ const Confirmation = () => {
       </div>
 
       {/* Confirmation Text */}
-      <h1 className="jost-font-capitalize text-3xl sm:text-4xl font-[400] mb-2">
+      <h1 className="jost-font-capitalize text-3xl text-[#1E1E1E] sm:text-4xl font-[400] mb-2">
         Your order has been confirmed
       </h1>
       <p className="jost-font-capitalize text-gray-600 mb-4">
@@ -21,7 +21,7 @@ const Confirmation = () => {
           Beaded Bangladesh
         </Link>.
       </p>
-      <h2 className="jost-font-capitalize text-lg font-medium mb-6">
+      <h2 className="jost-font-capitalize text-[#1E1E1E] text-lg font-medium mb-6">
         Order Code: #10102
       </h2>
 

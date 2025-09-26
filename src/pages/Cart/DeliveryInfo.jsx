@@ -3,7 +3,7 @@ import { FaEdit } from "react-icons/fa";
 import { AuthContext } from "../../pages/Auth/AuthProvider";
 import { Link } from "react-router-dom";
 
-const DeliveryInfo = ({setStep}) => {
+const DeliveryInfo = ({ setStep }) => {
 
   const { user } = useContext(AuthContext);
   const [addressType, setAddressType] = useState(""); // default empty
@@ -65,14 +65,16 @@ const DeliveryInfo = ({setStep}) => {
           <input
             type="text"
             placeholder="Notes"
-            className="w-full jost-font-capitalize border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#00B5A5]"
+            className="w-full jost-font-capitalize border border-gray-300 px-3 py-2 
+             focus:outline-none focus:ring-2 focus:ring-[#00B5A5] 
+             placeholder-gray-400"
           />
         </div>
       </div>
 
       {/* Section Two - Delivery Address */}
       <div className="flex-1 space-y-6 min-w-[300px]">
-        <h2 className="text-[28px] jost-font-capitalize font-[500]">Delivery Address</h2>
+        <h2 className="text-[28px] text-[#1E1E1E] jost-font-capitalize font-[500]">Delivery Address</h2>
 
         {/* Address Type Selector */}
         <div className="flex flex-col md:flex-row md:items-end gap-4">
@@ -81,7 +83,7 @@ const DeliveryInfo = ({setStep}) => {
             <select
               value={addressType}
               onChange={(e) => setAddressType(e.target.value)}
-              className="w-full jost-font-capitalize px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#00B5A5]"
+              className="w-full  text-[#1E1E1E] jost-font-capitalize px-3 py-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#00B5A5]"
             >
               <option value="">Select Address Type</option>
               <option value="home">Home</option>
@@ -159,7 +161,7 @@ const DeliveryInfo = ({setStep}) => {
           >
             CONTINUE SHOPPING
           </Link>
-          <button  onClick={() => setStep(2)} className="jost-font-uppercase px-6 py-2 border bg-[#00B5A5] hover:bg-[#287d77] font-[500] rounded-full text-[#FFFFFF] w-full sm:w-auto">
+          <button onClick={() => setStep(2)} className="jost-font-uppercase px-6 py-2 border bg-[#00B5A5] hover:bg-[#287d77] font-[500] rounded-full text-[#FFFFFF] w-full sm:w-auto">
             REVIEW ORDER
           </button>
         </div>
